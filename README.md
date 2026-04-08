@@ -63,6 +63,10 @@ The goal was to design and implement a secure, scalable network using industry-s
 * Blocked traffic between restricted VLANs
 * Connectivity to Data Center servers verified
 
+## Screenshots
+
+https://www.notion.so/Packet-Tracer-Project-33c2f9b6c931808d9f6cf89d715df4a5?source=copy_link
+
 ---
 
 ## 🚧 Challenges Faced
