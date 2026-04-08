@@ -1,0 +1,114 @@
+VLAN-Setup
+
+CONFIGURE HQ_SW1
+
+Commands you used
+
+enable
+configure terminal
+vlan 10
+name HR
+exit
+vlan 20
+name FINANCE
+exit
+interface range fa0/1 - 4
+switchport mode access
+switchport access vlan 10
+exit
+interface range fa0/5 - 6
+switchport mode access
+switchport access vlan 20
+exit
+interface gig0/1
+switchport mode trunk
+exit
+
+CONFIGURE HQ_SW2
+
+
+enable
+configure terminal
+vlan 30
+name IT
+exit
+vlan 40
+name SALES
+exit
+interface range fa0/1 - 4
+switchport mode access
+switchport access vlan 30
+exit
+interface range fa0/5 - 6
+switchport mode access
+switchport access vlan 40
+exit
+interface gig0/1
+switchport mode trunk
+exit
+show vlan brief
+
+
+
+CONFIGURE BO_SW1
+
+enable
+configure terminal
+vlan 50
+name ADMIN
+exit
+vlan 60
+name SALES
+exit
+interface range fa0/4 - 6
+switchport mode access
+switchport access vlan 60
+exit
+interface gig0/1
+switchport mode trunk
+exit
+show vlan brief
+
+
+
+CONFIGURE DC_SW1
+
+enable
+configure terminal
+vlan 70
+name SERVERS
+exit
+interface range fa0/1 - 3
+switchport mode access
+switchport access vlan 70
+exit
+interface gig0/1
+switchport mode trunk
+exit
+show vlan brief
+
+
+Why VLANs are needed.
+
+- I created the vlans so that the network can be logically segmented into sep
+ Broadcast domains, improving security, performances, and network management. So plans separated the departments like HR, Finance and IT into different network even if they are on the same physical switch
+
+
+Routing-OSPF.md
+
+OSPF config
+How routers communicate
+
+
+
+Security-ACL.md
+
+ACL rules
+Why traffic is blocked
+
+
+
+Troubleshooting.md
+
+Problems you faced
+How you fixed them
