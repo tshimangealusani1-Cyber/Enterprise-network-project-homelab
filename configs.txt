@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Cable connections
 
 
@@ -43,3 +44,48 @@ BO_SW1(fa0/1-3) to admin vlan pcs(fa0)
 BO_SW1(fa0/4-6) to SALES2 vlans pcs(fa0)
 
 
+=======
+cable connections
+
+Routers
+HQ_R (se0/0/0) to DC_R1(se0/0/0) - using serial dce
+HQ_R (se0/0/1) to BO_R1(se0/0/1) - using serial dce
+BO_R1(se0/0/0) to DC_R1(se0/0/1) - using serial dce
+
+Switches
+HQ_R (gig0/1) to HQ_SW2 (gig/1) - using straight through cable
+HQ_R(gig0/0) to HQ_SW1(gig0/1) - using straight through cable
+
+DC_R1(gig0/0) to DC_SW1(gig0/1) - using straight through cable
+
+BO_R1(gig0/0) to BO_SW1(gig0/1) - using straight through cable
+
+Pcs 
+
+HQs PCS (nb// although I wrote vlans, I didn’t configure them I just assumed on my sketches)
+
+HR - vlan 10 
+HQ_SW1(fa0/1-4) to pcs
+
+Finance - vlan 20
+HQ_SW1(fa0/5-6) to pcs
+
+IT - vlan 30
+HQ_SW2(fa0/1-4)
+
+SALES - vlan 40
+HQ_SW2(fa0/5-6)
+
+Data centre devices
+ DC_SW1 (fa0/1) to WEB_SERVER(fa0)
+DC_SW1(fa0/2) to FILE_SERVER(fa0)
+DC_SW1(fa0/3) to FILE_SERVER(fa0)
+
+
+Branch office devices
+
+BO_SW1(fa0/1-3) to admin vlan pcs(fa0)
+BO_SW1(fa0/4-6) to SALES2 vlans pcs(fa0)
+
+
+>>>>>>> dba2f943560e4d376336694c8401ff16e2e17631
