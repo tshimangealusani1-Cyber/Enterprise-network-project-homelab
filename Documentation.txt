@@ -93,6 +93,51 @@ Why VLANs are needed.
 - I created the vlans so that the network can be logically segmented into sep
  Broadcast domains, improving security, performances, and network management. So plans separated the departments like HR, Finance and IT into different network even if they are on the same physical switch
 
+Inter Vlans
+
+HQ_R CONFIG
+
+enable
+configure terminal
+
+interface gig0/0
+no shutdown
+
+interface gig0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+
+interface gig0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+
+interface gig0/1
+no shutdown
+
+interface gig0/1.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+
+interface gig0/1.40
+encapsulation dot1Q 40
+ip address 192.168.40.1 255.255.255.0
+
+HQ_SW1
+interface gig0/1
+switchport mode trunk
+exit
+
+HQ_SW2
+
+interface gig0/1
+switchport mode trunk
+exit
+
+
+Why I used inter vlans
+- implemented to allow communication between different departments (VLANs) while maintaining network segmentation. This was achieved using Router-on-a-Stick, where a single router interface handles multiple VLANs using subinterfaces.
+
+Trunk links were configured to allow multiple VLAN traffic between switches and the router using IEEE 802.1Q tagging.
 
 Routing-OSPF.md
 
