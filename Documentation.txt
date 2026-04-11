@@ -135,9 +135,9 @@ exit
 
 
 Why I used inter vlans
-- implemented to allow communication between different departments (VLANs) while maintaining network segmentation. This was achieved using Router-on-a-Stick, where a single router interface handles multiple VLANs using subinterfaces.
+- I implemented it to allow communication between different departments (VLANs) while maintaining network segmentation. I used used Router-on-a-Stick, where a single router interface handles multiple VLANs using subinterfaces.
 
-Trunk links were configured to allow multiple VLAN traffic between switches and the router using IEEE 802.1Q tagging.
+I configured trunk links  to allow multiple VLAN traffic between switches and the router using IEEE 802.1Q tagging.
 
 Routing-OSPF.md
 
