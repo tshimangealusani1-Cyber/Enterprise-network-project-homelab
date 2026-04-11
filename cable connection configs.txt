@@ -18,7 +18,6 @@ BO_R1(gig0/0) to BO_SW1(gig0/1) - using straight through cable
 
 Pcs 
 
-HQs PCS (nb// although I wrote vlans, I didn’t configure them I just assumed on my sketches)
 
 HR - vlan 10 
 HQ_SW1(fa0/1-4) to pcs
@@ -62,7 +61,6 @@ BO_R1(gig0/0) to BO_SW1(gig0/1) - using straight through cable
 
 Pcs 
 
-HQs PCS (nb// although I wrote vlans, I didn’t configure them I just assumed on my sketches)
 
 HR - vlan 10 
 HQ_SW1(fa0/1-4) to pcs
