@@ -278,7 +278,68 @@ This ensures centralized services are reachable from all locations.
 Routing-OSPF.md
 
 OSPF config
-How routers communicate
+
+
+HQ_R OSPF CONFIGS
+
+enable
+configure terminal
+
+router ospf 1
+network 192.168.10.0 0.0.0.255 area 0
+network 192.168.20.0 0.0.0.255 area 0
+network 192.168.30.0 0.0.0.255 area 0
+network 192.168.40.0 0.0.0.255 area 0
+
+network 10.0.0.0 0.0.0.3 area 0
+network 10.0.0.4 0.0.0.3 area 0
+
+## OSPF Configuration (HQ)
+I configured OSPF (process ID 1) on the HQ router to enable dynamic routing across the enterprise network.
+All internal VLAN networks and WAN links were advertised into OSPF area 0.
+
+This allows:
+- Automatic route learning
+- Scalable network design
+- Simplified management compared to static routing
+
+BO_R1 OSPF CONFIGS
+
+enable
+configure terminal
+
+router ospf 1
+network 192.168.50.0 0.0.0.255 area 0
+network 192.168.60.0 0.0.0.255 area 0
+
+network 10.0.0.4 0.0.0.3 area 0
+network 10.0.0.8 0.0.0.3 area 0
+
+## OSPF Configuration (Branch)
+OSPF was configured on the branch router to allow communication with HQ and Data Center.
+The router advertises its internal VLAN networks and WAN links, ensuring full connectivity across the enterprise network.
+
+
+DC_R1 OSPF CONFIGS
+
+enable
+configure terminal
+
+router ospf 1
+network 192.168.70.0 0.0.0.255 area 0
+
+network 10.0.0.0 0.0.0.3 area 0
+network 10.0.0.8 0.0.0.3 area 0
+
+
+## OSPF Configuration (Data Center)
+OSPF was configured on the data center router to advertise the server network.
+This ensures that all users across HQ and Branch can access critical services such as web and file servers.
+
+
+
+
+
 
 
 
