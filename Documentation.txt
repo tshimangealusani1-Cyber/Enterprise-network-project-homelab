@@ -1,4 +1,5 @@
-VLAN-Setup
+1. VLAN-Setup
+
 
 CONFIGURE HQ_SW1
 
@@ -23,6 +24,8 @@ exit
 interface gig0/1
 switchport mode trunk
 exit
+
+
 
 CONFIGURE HQ_SW2
 
@@ -93,7 +96,12 @@ Why VLANs are needed.
 - I created the vlans so that the network can be logically segmented into sep
  Broadcast domains, improving security, performances, and network management. So plans separated the departments like HR, Finance and IT into different network even if they are on the same physical switch
 
-Inter Vlans
+
+
+
+
+2. INTER VLANS 
+
 
 HQ_R CONFIG
 
@@ -133,11 +141,78 @@ interface gig0/1
 switchport mode trunk
 exit
 
+BRANCH OFFICE INTER-VLANS
+
+BO_R1
+
+enable
+configure terminal
+
+interface gig0/0
+no shutdown
+
+interface gig0/0.50
+encapsulation dot1Q 50
+ip address 192.168.50.1 255.255.255.0
+
+interface gig0/0.60
+encapsulation dot1Q 60
+ip address 192.168.60.1 255.255.255.0
+
+BO_SW1
+
+interface gig0/1
+switchport mode trunk
+
+## Inter-VLAN Testing (Branch)
+
+After configuring subinterfaces on the branch router, I tested connectivity between VLANs.
+
+### Test:
+- Ping from Admin VLAN (50) to Sales VLAN (60)
+
+### Result:
+- Successful communication
+
+
+DC_R1
+
+enable
+configure terminal
+
+interface gig0/0
+no shutdown
+
+interface gig0/0.70
+encapsulation dot1Q 70
+ip address 192.168.70.1 255.255.255.0
+
+DC_SW1
+
+interface gig0/1
+switchport mode trunk
+
+## Data Center Connectivity Testing
+
+After configuring VLAN 70 and router subinterface:
+
+### Test:
+- Ping from server to gateway (192.168.70.1)
+
+### Result:
+- Successful communication
+
 
 Why I used inter vlans
 - I implemented it to allow communication between different departments (VLANs) while maintaining network segmentation. I used used Router-on-a-Stick, where a single router interface handles multiple VLANs using subinterfaces.
 
 I configured trunk links  to allow multiple VLAN traffic between switches and the router using IEEE 802.1Q tagging.
+
+
+
+
+
+
 
 Routing-OSPF.md
 
