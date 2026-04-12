@@ -211,6 +211,67 @@ I configured trunk links  to allow multiple VLAN traffic between switches and th
 
 
 
+WAN LINKS
+
+On HQ_R1
+
+enable
+configure terminal
+
+router ospf 1
+network 192.168.10.0 0.0.0.255 area 0
+network 192.168.20.0 0.0.0.255 area 0
+network 192.168.30.0 0.0.0.255 area 0
+network 192.168.40.0 0.0.0.255 area 0
+
+
+network 10.0.0.0 0.0.0.3 area 0
+network 10.0.0.4 0.0.0.3 area 0
+
+## WAN Configuration (HQ)
+
+To enable communication between sites, I configured serial interfaces on the HQ router.
+Each point-to-point link uses a /30 subnet to conserve IP space and ensure efficient routing.
+Clock rate was applied on DCE interfaces to establish proper synchronization.
+
+
+
+On BO_R1
+
+enable
+configure terminal
+
+interface s0/0/1
+ip address 10.0.0.6 255.255.255.252
+no shutdown
+
+interface s0/0/0
+ip address 10.0.0.9 255.255.255.252
+clock rate 64000
+no shutdown
+
+## WAN Configuration (Branch)
+Serial interfaces were configured with /30 subnets to connect the branch office with HQ and the data center.
+This enables inter-site communication and routing.
+
+On DC_R1
+
+enable
+configure terminal
+
+interface s0/0/0
+ip address 10.0.0.2 255.255.255.252
+no shutdown
+
+interface s0/0/1
+ip address 10.0.0.10 255.255.255.252
+no shutdown
+
+## WAN Configuration (Data Center)
+The data center router was configured with serial interfaces to establish connectivity with HQ and Branch.
+This ensures centralized services are reachable from all locations.
+
+
 
 
 
