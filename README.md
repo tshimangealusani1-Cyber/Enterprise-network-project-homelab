@@ -74,11 +74,4 @@ https://www.notion.so/Packet-Tracer-Project-33c2f9b6c931808d9f6cf89d715df4a5?sou
 
 ---
 
-## 📈 Key Takeaways
-
-* Gained hands-on experience with enterprise network design
-* Improved troubleshooting skills
-* Learned how to implement network security controls
-
----
 
