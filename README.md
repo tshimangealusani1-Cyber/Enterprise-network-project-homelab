@@ -82,24 +82,10 @@ The project focuses on network segmentation, secure communication, and dynamic r
 https://www.notion.so/Packet-Tracer-Project-33c2f9b6c931808d9f6cf89d715df4a5?source=copy_link
 
 ### Network Topology
-
-![Topology](Screenshots/Topology/step1-physical-topology.png)
-
 ### VLAN Configuration
-
-![VLAN](Screenshots/VLANs/hq_sw1_vlan_config.png)
-
 ### OSPF Routing
-
-![OSPF](Screenshots/Routing/hq_router_subinterfaces.png)
-
 ### ACL Security
-
-![ACL](Screenshots/Security/acl_config.png)
-
 ### Testing
-
-![Ping](Screenshots/Testing/inter_vlan_ping_success.png)
 
 ---
 
