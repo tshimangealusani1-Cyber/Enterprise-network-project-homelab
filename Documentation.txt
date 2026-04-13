@@ -345,8 +345,73 @@ This ensures that all users across HQ and Branch can access critical services su
 
 Security-ACL.md
 
-ACL rules
-Why traffic is blocked
+
+HQ_R 
+
+enable
+configure terminal
+
+ip access-list extended VLAN_SECURITY
+
+! Block HR → Finance
+deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+
+! Block Sales → HR
+deny ip 192.168.40.0 0.0.0.255 192.168.10.0 0.0.0.255
+
+! Allow IT → ALL
+permit ip 192.168.30.0 0.0.0.255 any
+
+! Allow everything else 
+permit ip any any
+
+
+
+To enforce security policies between departments, I configured extended Access Control Lists (ACLs) on the HQ router.
+
+### Security Rules Implemented:
+- HR (VLAN 10) cannot access Finance (VLAN 20)
+- Sales (VLAN 40) cannot access HR (VLAN 10)
+- IT (VLAN 30) has full access to all networks
+- All VLANs can access Data Center services
+
+ACLs were applied inbound on router subinterfaces to filter traffic at the source.
+
+This approach improves security by preventing unauthorized communication between departments while maintaining required access.
+
+
+APPLIED ACL TO INTERFACES
+
+interface gig0/0.10
+ip access-group VLAN_SECURITY in
+
+interface gig0/1.40
+ip access-group VLAN_SECURITY in
+
+
+- The ACL was applied inbound on router subinterfaces to filter traffic at the source.
+- This ensures unauthorized traffic is blocked before it enters the network core.
+
+
+TESTING 
+
+
+ping 192.168.20.10   -  (HR → Finance)
+ping 192.168.10.10   -  (Sales → HR)
+ping 192.168.70.10   -  (DATA CENTER SERVERS)
+
+
+I performed tests to verify ACL behavior:
+
+### Tests:
+- HR → Finance → Blocked
+- Sales → HR → Blocked
+- IT → All → Allowed
+- All VLANs → Data Center → Allowed
+
+### Result:
+- ACLs are functioning correctly and enforcing security policies as intended
+
 
 
 
