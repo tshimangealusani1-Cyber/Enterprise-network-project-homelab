@@ -16,7 +16,6 @@ The goal was to design and implement a secure, scalable network using industry-s
 * Configure inter-VLAN routing
 * Deploy OSPF for dynamic routing
 * Apply ACLs for security
-* Configure NAT for internet access
 
 ---
 
@@ -34,7 +33,6 @@ The goal was to design and implement a secure, scalable network using industry-s
 * VLANs
 * OSPF
 * ACL (Access Control Lists)
-* NAT
 
 ---
 
@@ -48,16 +46,15 @@ The goal was to design and implement a secure, scalable network using industry-s
 
 ---
 
-## 🔐 Security Implementation
+##  Security Implementation
 
 * VLAN segmentation between departments
 * ACL rules restricting inter-department access
 * IT VLAN has full access
-* NAT configured for external communication
 
 ---
 
-## 🧪 Testing & Validation
+##  Testing & Validation
 
 * Successful ping between allowed VLANs
 * Blocked traffic between restricted VLANs
@@ -69,7 +66,7 @@ https://www.notion.so/Packet-Tracer-Project-33c2f9b6c931808d9f6cf89d715df4a5?sou
 
 ---
 
-## 🚧 Challenges Faced
+## Challenges Faced
 
 * OSPF neighbor issues due to incorrect network statements
 * VLAN misconfiguration on trunk ports
