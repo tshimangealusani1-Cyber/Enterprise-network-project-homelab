@@ -1,77 +1,121 @@
 
-# 🏢 Enterprise Network Project – NovaTech Solutions
+# 🏢 Enterprise Network Simulation – NovaTech Solutions
 
 ## 📌 Overview
 
-This project simulates a real-world enterprise network for a multi-site company with a headquarters, branch office, and data center.
+I designed and implemented a multi-site enterprise network simulating a real company environment with a Headquarters, Branch Office, and Data Center.
 
-The goal was to design and implement a secure, scalable network using industry-standard technologies.
+The project focuses on network segmentation, secure communication, and dynamic routing using industry-standard technologies.
 
 ---
 
 ## 🎯 Objectives
 
-* Design a multi-site network (HQ, Branch, Data Center)
-* Implement VLAN segmentation
-* Configure inter-VLAN routing
-* Deploy OSPF for dynamic routing
-* Apply ACLs for security
+* Design a scalable multi-site network
+* Segment departments using VLANs
+* Enable inter-VLAN communication
+* Implement dynamic routing using OSPF
+* Enforce security using extended ACLs
 
 ---
 
-## 🧱 Network Design
+## 🧱 Network Architecture
 
-* HQ (Johannesburg): HR, Finance, IT, Sales departments
-* Branch (Cape Town): Admin, Sales
-* Data Center: Web, DNS, File servers
+* **HQ (Johannesburg):** HR, Finance, IT, Sales
+* **Branch (Cape Town):** Admin, Sales
+* **Data Center (Midrand):** Web, File, DNS Servers
 
 ---
 
 ## 🛠️ Technologies Used
 
 * Cisco Packet Tracer
-* VLANs
-* OSPF
-* ACL (Access Control Lists)
+* VLANs (Segmentation)
+* Inter-VLAN Routing (Router-on-a-Stick)
+* OSPF (Dynamic Routing)
+* Extended ACLs (Security Enforcement)
 
 ---
 
 ## 🌐 IP Addressing
 
-| Location    | Network         |
-| ----------- | --------------- |
-| HQ          | 192.168.10.0/24 |
-| Branch      | 192.168.20.0/24 |
-| Data Center | 192.168.30.0/24 |
+| Network         | Purpose      |
+| --------------- | ------------ |
+| 192.168.10.0/24 | HR           |
+| 192.168.20.0/24 | Finance      |
+| 192.168.30.0/24 | IT           |
+| 192.168.40.0/24 | Sales        |
+| 192.168.50.0/24 | Branch Admin |
+| 192.168.60.0/24 | Branch Sales |
+| 192.168.70.0/24 | Data Center  |
 
 ---
 
-##  Security Implementation
+## 🔐 Security Implementation
 
-* VLAN segmentation between departments
-* ACL rules restricting inter-department access
-* IT VLAN has full access
+* VLAN-based segmentation between departments
+* Extended ACLs to restrict unauthorized access
+* IT VLAN granted full network access
+* Controlled communication between departments
 
 ---
 
-##  Testing & Validation
+## 🌍 Routing
 
-* Successful ping between allowed VLANs
-* Blocked traffic between restricted VLANs
-* Connectivity to Data Center servers verified
+* OSPF (Area 0) used for dynamic routing
+* Automatic route learning between HQ, Branch, and Data Center
+* Scalable and efficient routing design
 
-## Screenshots
+---
+
+## 🧪 Testing & Validation
+
+* Inter-VLAN communication successful
+* OSPF neighbor adjacency established
+* End-to-end connectivity verified
+* ACL rules correctly blocking and allowing traffic
+
+---
+
+## 📸 Key Screenshots
 
 https://www.notion.so/Packet-Tracer-Project-33c2f9b6c931808d9f6cf89d715df4a5?source=copy_link
 
+### Network Topology
+
+![Topology](Screenshots/Topology/step1-physical-topology.png)
+
+### VLAN Configuration
+
+![VLAN](Screenshots/VLANs/hq_sw1_vlan_config.png)
+
+### OSPF Routing
+
+![OSPF](Screenshots/Routing/hq_router_subinterfaces.png)
+
+### ACL Security
+
+![ACL](Screenshots/Security/acl_config.png)
+
+### Testing
+
+![Ping](Screenshots/Testing/inter_vlan_ping_success.png)
+
 ---
 
-## Challenges Faced
+## 🚧 Challenges & Solutions
 
-* OSPF neighbor issues due to incorrect network statements
-* VLAN misconfiguration on trunk ports
-* ACL rules blocking unintended traffic
+* OSPF adjacency issues due to missing WAN configuration → resolved by configuring serial interfaces
+* VLAN communication issues due to trunk misconfiguration → corrected trunk ports
+* ACL rule ordering initially blocked valid traffic → fixed rule sequence
 
 ---
 
+## 📈 Key Takeaways
 
+* Practical experience in enterprise network design
+* Strong understanding of segmentation and security
+* Hands-on troubleshooting of real networking issues
+* Ability to simulate real-world infrastructure
+
+---
